@@ -3,62 +3,90 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Belajar Live Streaming dari HP</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>Papagamingg | Live Streaming, Overlay & Jingle</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#F5F4FF;--card:#fff;--ink:#171933;--mute:#5d6086;--line:#dcdcf3;--acc:#4f5fff;--acc2:#d63fb5;--ok:#17a05d;--soft:#ebebff;
+:root{--bg:#EDF1F0;--card:#fff;--ink:#1D2B33;--mute:#5A6A72;--line:#D5DEDD;--acc:#2E6F72;--acc2:#B7843A;--ok:#2E7D5B;--soft:#E3EBEA;--on:#fff;--hero:linear-gradient(135deg,#2E6F72,#3B5B73);--slate:#1D2B33;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d0f1a;--card:#151829;--ink:#ecedff;--mute:#9ea2c8;--line:#262a45;--acc:#7482ff;--acc2:#f067cf;--ok:#3ddc8a;--soft:#1d2140}}
-:root[data-theme="dark"]{--bg:#0d0f1a;--card:#151829;--ink:#ecedff;--mute:#9ea2c8;--line:#262a45;--acc:#7482ff;--acc2:#f067cf;--ok:#3ddc8a;--soft:#1d2140}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1719;--card:#162124;--ink:#E6EEEE;--mute:#97A9AE;--line:#243336;--acc:#5BB3B6;--acc2:#D9A85A;--ok:#5FD0A0;--soft:#1B2A2D;--on:#0B1416;--hero:linear-gradient(135deg,#1F4C4F,#27394A);--slate:#0B1416}}
+:root[data-theme="dark"]{--bg:#0F1719;--card:#162124;--ink:#E6EEEE;--mute:#97A9AE;--line:#243336;--acc:#5BB3B6;--acc2:#D9A85A;--ok:#5FD0A0;--soft:#1B2A2D;--on:#0B1416;--hero:linear-gradient(135deg,#1F4C4F,#27394A);--slate:#0B1416}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.65 Poppins,system-ui,sans-serif}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.65 "Plus Jakarta Sans",system-ui,sans-serif}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:30}
-main{max-width:640px;margin:auto;padding:16px 16px 60px}
-.sw{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;background:var(--soft);padding:5px;border-radius:14px;position:sticky;top:env(safe-area-inset-top,0px);z-index:5}
-.sw button{border:0;border-radius:10px;padding:10px 2px;background:none;color:var(--mute);font:600 13px Poppins,sans-serif;cursor:pointer}
-.sw button.on{background:var(--card);color:var(--acc);box-shadow:0 1px 4px #0002}
-.hero{background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;border-radius:20px;padding:24px;margin:16px 0}
-.hero h1{font-size:26px;line-height:1.2;margin:0 0 8px;letter-spacing:-.02em}
-.hero p{margin:0;color:#ffffffe6}
-h2{font-size:19px;margin:28px 0 8px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;margin:10px 0}
+main{max-width:640px;margin:auto;padding:12px 16px 60px}
+.brand{display:flex;align-items:center;gap:12px;padding:8px 2px 14px}
+.logo{width:42px;height:42px;border-radius:12px;background:var(--slate);color:var(--acc2);display:grid;place-items:center;font:800 20px "Plus Jakarta Sans",sans-serif;flex:none}
+.brand b{display:block;font-size:17px;line-height:1.2;letter-spacing:-.01em}
+.brand small{display:block;color:var(--mute);font-size:12.5px;line-height:1.35}
+.sw{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;background:var(--soft);padding:4px;border-radius:12px;position:sticky;top:env(safe-area-inset-top,0px);z-index:5;border:1px solid var(--line)}
+.sw button{border:0;border-radius:9px;padding:10px 2px;background:none;color:var(--mute);font:600 13px "Plus Jakarta Sans",sans-serif;cursor:pointer;transition:background .15s,color .15s}
+.sw button.on{background:var(--card);color:var(--acc);box-shadow:0 1px 3px #1d2b3326}
+.hero{background:var(--hero);color:#fff;border-radius:18px;padding:26px 22px;margin:14px 0}
+.hero h1{font-size:25px;line-height:1.2;margin:0 0 8px;letter-spacing:-.02em;font-weight:800}
+.hero p{margin:0;color:#ffffffdb;font-size:15px}
+h2{font-size:18px;margin:28px 0 8px;letter-spacing:-.01em;font-weight:700}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin:10px 0}
 ul.ck{list-style:none;padding:0;margin:0}
 ul.ck li{padding:6px 0 6px 30px;position:relative}
-ul.ck li::before{content:"✓";position:absolute;left:0;top:6px;width:22px;height:22px;border-radius:50%;background:var(--soft);color:var(--ok);font-weight:700;font-size:13px;display:grid;place-items:center}
+ul.ck li::before{content:"\2713";position:absolute;left:0;top:7px;width:21px;height:21px;border-radius:50%;background:var(--soft);color:var(--ok);font-weight:700;font-size:12px;display:grid;place-items:center}
 .pr{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
-.pr b{font-size:26px;color:var(--acc)}
-.btn{display:block;width:100%;text-align:center;text-decoration:none;border:0;border-radius:12px;padding:14px;background:var(--acc);color:#fff;font:600 16px Poppins,sans-serif;cursor:pointer;margin-top:12px}
+.pr b{font-size:24px;color:var(--acc);letter-spacing:-.02em}
+.btn{display:block;width:100%;text-align:center;text-decoration:none;border:0;border-radius:10px;padding:14px;background:var(--acc);color:var(--on);font:700 15.5px "Plus Jakarta Sans",sans-serif;cursor:pointer;margin-top:12px}
+.btn:hover{filter:brightness(1.07)}
 .btn.o{background:none;border:2px solid var(--acc);color:var(--acc)}
-.note{border-left:4px solid var(--acc2);background:var(--soft);padding:10px 14px;border-radius:0 12px 12px 0;font-size:14px;margin:12px 0}
-.chips{display:flex;flex-wrap:wrap;gap:8px}.chips span{background:var(--soft);border-radius:99px;padding:4px 14px;font-size:14px}
+.btn.g{background:var(--acc2);color:#1D2B33}
+.btn[disabled]{opacity:.45;cursor:not-allowed;filter:none}
+.note{border-left:4px solid var(--acc2);background:var(--soft);padding:10px 14px;border-radius:0 10px 10px 0;font-size:14px;margin:12px 0}
+.note a{color:var(--acc);font-weight:700}
+.note.w{border-left-color:#B5524A}
+.chips{display:flex;flex-wrap:wrap;gap:8px}.chips span{background:var(--soft);border:1px solid var(--line);border-radius:99px;padding:4px 14px;font-size:14px}
 ol.st{padding-left:20px;margin:0}ol.st li{padding:3px 0}
 details{border-top:1px solid var(--line);padding:10px 0}details summary{font-weight:600;cursor:pointer}
 details p{color:var(--mute);margin:6px 0 0;font-size:15px}
 footer{font-size:13px;color:var(--mute);margin-top:30px}
-.note.w{border-left-color:#e5484d}
-#frm{position:fixed;inset:0;background:#000c;z-index:50;display:none;overflow:auto;padding:calc(env(safe-area-inset-top,0px) + 16px) 16px 30px}#frm.on{display:block}
-.fld{display:block;margin:10px 0 4px;font-size:13px;font-weight:600}.in{width:100%;padding:11px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font:400 15px Poppins,sans-serif}.err{color:#e5484d;font-size:13px;margin-top:8px;min-height:18px}
 footer a{color:var(--acc)}
-#pay{position:fixed;inset:0;background:#000c;z-index:50;display:none;overflow:auto;padding:calc(env(safe-area-inset-top,0px) + 16px) 16px 30px}
-#pay.on{display:block}
-.box{max-width:480px;margin:auto;background:var(--card);border-radius:20px;padding:20px}
+.free{background:var(--slate);color:#fff;border-radius:18px;padding:20px;margin:14px 0;border:1px solid #ffffff14}
+.free h3{margin:10px 0 4px;font-size:19px;line-height:1.3;letter-spacing:-.01em}
+.free p{margin:0;color:#ffffffc7;font-size:14.5px}
+.slots{display:flex;gap:6px;align-items:center}
+.slots i{width:14px;height:14px;border-radius:50%;background:var(--acc2);display:block}
+.slots span{margin-left:6px;font-size:12.5px;font-weight:600;color:#ffffffc7}
+.free.sm{padding:14px 16px;display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.free.sm div{font-size:14px;font-weight:600;flex:1 1 200px}
+.free.sm .btn{width:auto;margin:0;padding:10px 16px;font-size:14px}
+#frm,#pay,#clm{position:fixed;inset:0;background:#0a1114cc;z-index:50;display:none;overflow:auto;padding:calc(env(safe-area-inset-top,0px) + 16px) 16px 30px}
+#frm.on,#pay.on,#clm.on{display:block}
+.box{max-width:480px;margin:auto;background:var(--card);border-radius:18px;padding:20px}
 .box h3{margin:0 0 4px;font-size:19px}
+.fld{display:block;margin:10px 0 4px;font-size:13px;font-weight:600}
+.in{width:100%;padding:11px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font:400 15px "Plus Jakarta Sans",sans-serif}
+.err{color:#B5524A;font-size:13px;margin-top:8px;min-height:18px}
 .tb{display:flex;gap:6px;margin:14px 0}
-.tb button{flex:1;border:1px solid var(--line);background:var(--bg);color:var(--mute);border-radius:10px;padding:8px;font:600 13px Poppins,sans-serif;cursor:pointer}
-.tb button.on{background:var(--acc);border-color:var(--acc);color:#fff}
+.tb button{flex:1;border:1px solid var(--line);background:var(--bg);color:var(--mute);border-radius:10px;padding:8px;font:600 13px "Plus Jakarta Sans",sans-serif;cursor:pointer}
+.tb button.on{background:var(--acc);border-color:var(--acc);color:var(--on)}
 .row{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line)}
 .row small{color:var(--mute);display:block;font-size:12px;line-height:1.3}
-.cp{border:1px solid var(--acc);background:none;color:var(--acc);border-radius:8px;padding:4px 10px;font:600 12px Poppins,sans-serif;cursor:pointer}
+.cp{border:1px solid var(--acc);background:none;color:var(--acc);border-radius:8px;padding:4px 10px;font:600 12px "Plus Jakarta Sans",sans-serif;cursor:pointer}
 .qr{display:block;max-width:240px;width:100%;margin:10px auto;border-radius:12px}
-button:focus-visible,a:focus-visible{outline:3px solid var(--acc2);outline-offset:2px}
+.fa{display:flex;justify-content:space-between;align-items:center;gap:10px;text-decoration:none;color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:8px 0;font-weight:600}
+.fa small{font-weight:500;color:var(--mute);font-size:12.5px}
+.fa.done{border-color:var(--ok);background:var(--soft)}
+.fa.done small{color:var(--ok)}
+.agree{display:flex;gap:10px;margin-top:12px;font-size:14px;line-height:1.5}
+.agree input{width:20px;height:20px;flex:none}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--acc2);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
 <body>
 <main>
+<header class="brand"><div class="logo" aria-hidden="true">P</div><div><b>Papagamingg</b><small>Live streaming, overlay, dan musik untuk kreator</small></div></header>
 <div class="sw" role="tablist"><button id="t-ebook" onclick="show('ebook')">Ebook</button><button id="t-grup" onclick="show('grup')">Grup</button><button id="t-setup" onclick="show('setup')">Setup</button><button id="t-jingle" onclick="show('jingle')">Jingle</button></div>
 
 <section id="s-ebook" hidden>
  <div class="hero"><h1>Ebook Live Streaming dari HP</h1><p>Panduan interaktif memakai aplikasi Streamingin di Android, dari nol sampai siap Go Live.</p></div>
+ <div class="free sm"><div>Mau coba dulu? Grup Telegram VIP gratis untuk 10 orang pertama.</div><button class="btn g" onclick="openClaim()">Klaim gratis</button></div>
  <div class="card"><div class="pr"><span>Harga ebook<br><small style="color:var(--mute)">Sudah termasuk akses grup Telegram. Akses dikirim segera setelah pembayaran dicek</small></span><b id="p-ebook"></b></div><button class="btn" onclick="buy('Ebook Live Streaming')">Beli sekarang</button></div>
  <h2>Yang kamu dapatkan</h2>
  <div class="card"><ul class="ck"><li>Ebook interaktif 10 part yang nyaman dibuka di HP, lengkap dengan screenshot, checklist, kuis, dan latihan</li><li>Video tutorial per part</li><li>Konsultasi langsung via Zoom atau WhatsApp, diajarin sampai paham (waktu sesuai kesepakatan bersama)</li><li>Akses gratis ke grup Telegram (preset live gratis dan tips harian)</li></ul></div>
@@ -73,6 +101,7 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--acc2);outline-offse
 
 <section id="s-grup" hidden>
  <div class="hero"><h1>Grup Telegram Tutorial Live Streaming</h1><p>Video tutorial, preset live gratis, dan tips harian seputar live streaming dalam satu grup privat.</p></div>
+ <div class="free"><div class="slots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><span>Kuota 10 orang</span></div><h3>Gabung grup Telegram VIP gratis</h3><p>Follow dua akun Papagamingg, lalu link grup langsung kamu dapatkan. Kuota habis? Kamu tetap bisa membeli akses di bawah.</p><button class="btn g" onclick="openClaim()">Klaim akses gratis</button></div>
  <div class="card"><div class="pr"><span>Harga akses grup</span><b id="p-grup"></b></div><button class="btn" onclick="buy('Grup Telegram')">Beli sekarang</button></div>
  <h2>Yang kamu dapatkan</h2>
  <div class="card"><ul class="ck"><li>Akses ke grup Telegram privat</li><li>Video tutorial Streamingin, satu topik untuk tiap part</li><li>Preset live streaming gratis</li><li>Tips dan trik harian seputar live streaming</li></ul></div>
@@ -143,8 +172,27 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--acc2);outline-offse
   <div class="note">Setelah transfer, kirim bukti pembayaran lewat WhatsApp.</div>
   <div class="note w" id="pw" hidden>Pembayaran jasa setup tidak dapat dibatalkan dan tidak dapat dikembalikan, kecuali kendalanya ada pada penyedia jasa.<br><br>Saat mengirim bukti, kamu juga mengisi email dan password akun Streamingin di chat WhatsApp. Pastikan <b>stream key sudah dihapus</b> dan <b>akun TikTok sudah diputuskan</b>. Pakai password sementara, jangan berikan password Google atau email, dan ganti password setelah selesai.<br><br>Lama pengerjaan sekitar 3 hari setelah semua data yang diperlukan kami terima.</div>
   <div class="note w" id="pj" hidden>Durasi lagu mengikuti panjang lirik. Lirik bisa kamu buat sendiri atau kami yang buatkan, harganya sama.<br><br>Lama pengerjaan sekitar 3 hari setelah semua data yang diperlukan kami terima.</div>
+  <div class="note" id="pf" hidden>Mau akses gratis? <a href="#" onclick="closePay();openClaim();return false">Klaim grup VIP gratis</a> (kuota 10 orang).</div>
   <a class="btn" id="wa" target="_blank" rel="noopener">Kirim bukti pembayaran ke WhatsApp</a>
   <button class="btn o" onclick="closePay()">Tutup</button>
+ </div>
+</div>
+
+
+<div id="clm" role="dialog" aria-modal="true" aria-labelledby="clt" onclick="if(event.target===this)closeClaim()">
+ <div class="box">
+  <h3 id="clt">Klaim grup Telegram VIP gratis</h3><p style="margin:0 0 6px;color:var(--mute);font-size:14px">Kuota 10 orang. Ikuti dua langkah ini untuk membuka link grup.</p>
+  <p style="margin:12px 0 0;font-weight:700;font-size:14px">1. Follow kedua akun</p>
+  <a class="fa" id="fa1" href="https://www.tiktok.com/@papagamingg" target="_blank" rel="noopener" onclick="fol(1)"><span>@papagamingg<br><small id="fs1">Akun utama. Ketuk untuk membuka</small></span></a>
+  <a class="fa" id="fa2" href="https://www.tiktok.com/@shobat.kepo" target="_blank" rel="noopener" onclick="fol(2)"><span>@shobat.kepo<br><small id="fs2">Akun kedua. Ketuk untuk membuka</small></span></a>
+  <p style="margin:14px 0 0;font-weight:700;font-size:14px">2. Konfirmasi</p>
+  <label class="agree"><input type="checkbox" id="ck" disabled onchange="upd()"><span>Saya sudah follow @papagamingg dan @shobat.kepo.</span></label>
+  <button class="btn" id="gb" disabled onclick="getLink()">Dapatkan link grup</button>
+  <div id="gbox" hidden>
+   <div class="note">Link grup kamu siap. Admin akan mengecek, dan akun yang belum follow bisa dikeluarkan dari grup.</div>
+   <a class="btn g" id="gl" target="_blank" rel="noopener">Buka grup Telegram</a>
+  </div>
+  <button class="btn o" onclick="closeClaim()">Tutup</button>
  </div>
 </div>
 
@@ -167,7 +215,7 @@ $("mv").innerHTML=h}
 function buy(p,pr){prod=p;$("pp").textContent=p+" · "+(pr||(cur=="ebook"?C.price.ebook:C.price.grup));
 var su=p.indexOf("Setup")>-1,t="Halo, saya sudah transfer untuk "+p+(pr?" ("+pr+")":"")+". Berikut bukti pembayarannya."+(p.indexOf("Jingle")>-1?"\n\nNama usaha: \nLirik: (dari saya / minta dibuatkan)\nGaya lagu yang diinginkan: ":"")+(su?SPEC+"\n\nSaya bersedia mengirim akun Streamingin. Stream key sudah saya hapus dan akun TikTok sudah saya putuskan.\n\nEmail akun Streamingin: \nPassword (sementara): ":"");
 $("wa").href=C.wa?"https://wa.me/"+C.wa+"?text="+encodeURIComponent(t):C.lynk;
-$("pw").hidden=p.indexOf("Setup")<0;$("pj").hidden=p.indexOf("Jingle")<0;meth("bank");$("pay").className="on"}
+$("pw").hidden=p.indexOf("Setup")<0;$("pj").hidden=p.indexOf("Jingle")<0;$("pf").hidden=p!=="Grup Telegram";meth("bank");$("pay").className="on"}
 function closePay(){$("pay").className=""}
 function openForm(p,pr){FP={p:p,pr:pr};$("fp").textContent=p+" \u00b7 "+pr;$("f-err").textContent="";$("frm").className="on"}
 function closeForm(){$("frm").className=""}
@@ -185,6 +233,12 @@ $("p-ebook").textContent=C.price.ebook;$("p-grup").textContent=C.price.grup;
 var JINGLE=[{t:"Papa Gaming Drifting (1:14)",f:"Papa_Gaming_Drifting.mp3"},{t:"Papagaming (2:10)",f:"Papagaming.mp3"},{t:"Jingle Pemisah Umum (0:17)",f:"jingle_pemisah_umum.mp3"}];
 function renderJ(){var h=JINGLE.length?JINGLE.map(function(j){return '<div class="card"><b>'+j.t+'</b><audio controls preload="none" style="width:100%;margin-top:8px" src="'+j.f+'"></audio></div>'}).join(""):'<div class="card" style="color:var(--mute)">Contoh karya akan segera ditambahkan.</div>';$("j-list").innerHTML=h}
 renderJ();
+var TG="https://t.me/+xt9HRb4DMQU3MmM1",FL=[0,0,0];
+function openClaim(){FL=[0,0,0];[1,2].forEach(function(i){$("fa"+i).className="fa";$("fs"+i).textContent=i==1?"Akun utama. Ketuk untuk membuka":"Akun kedua. Ketuk untuk membuka"});$("ck").checked=false;$("gbox").hidden=true;$("gb").hidden=false;$("gl").removeAttribute("href");upd();$("clm").className="on"}
+function closeClaim(){$("clm").className=""}
+function fol(i){FL[i]=1;$("fa"+i).className="fa done";$("fs"+i).textContent="Sudah dibuka. Pastikan kamu menekan Follow";upd()}
+function upd(){var ok=FL[1]&&FL[2];$("ck").disabled=!ok;if(!ok)$("ck").checked=false;$("gb").disabled=!(ok&&$("ck").checked)}
+function getLink(){if($("gb").disabled)return;$("gl").href=TG;$("gbox").hidden=false;$("gb").hidden=true}
 function route(){var h=(location.hash||"").replace("#","");show(["grup","setup","jingle"].indexOf(h)>-1?h:"ebook")}
 window.addEventListener("hashchange",route);route();
 </script>
